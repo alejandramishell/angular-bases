@@ -1,0 +1,25 @@
+<h3>Listado de Héroes</h3>
+<!-- *ngIf="deleteHero"  es asi por que delteHero es falso  -->
+<div *ngIf="deleteHero; else nothingWasDeleted">
+  <h3>Héroe Borrado <small class="text-danger">{{deleteHero}}</small></h3>
+</div>
+<!-- #nothingWasDeleted esto se lo reconoce como una referencia local -->
+<!-- ng-template se usa con las directivas ngIf y ngIfElse para condicionalmente renderizar contenido en función de una expresión. es como tener un div  -->
+<ng-template #nothingWasDeleted>
+  <h3>No hay Héroe borrado</h3>
+</ng-template>
+
+<!-- se mostrara si y solo si el largo .length es mayor a 0 -->
+<button
+*ngIf="heroName.length>0"
+(click)="remveLastHero()"
+class="btn btn-outline-danger">
+Borrar ultimo héroe
+</button>
+
+<!-- Estamos pasando un arreglo con los nombres de los super heroes usando el ngFor -->
+<ul class="mt-2 list-group">
+  <li
+  *ngFor="let name of heroName"
+  class="list-group-item">{{name}}</li>
+</ul>
