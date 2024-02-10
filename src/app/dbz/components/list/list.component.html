@@ -1,0 +1,46 @@
+<h4>Listado</h4>
+<ul class="list-group">
+  <!-- lo primero es para obtener el listado  que viene de un modulo hijo
+      lo segundo es para extraer el indice del ngFor  y lo asignamos a la variable i -->
+
+  <!-- esta haciendo como un if donde con el signo ? esta preguntando
+  si esa exprecion es verdadera  se pone de color verde sino es falsa y no hace nada
+class="list-group-item {{i===0?'list-group-item-success':''}} " -->
+  <!-- el ngClass nos sirve para añadir clases de manera condicional  -->
+  <!-- justify-content-between le decimos que el espacio que sobra entre los dos elemento lo ponga en medio -->
+  <li
+    *ngFor="
+      let character of characterList;
+      let i = index;
+      let isFirst = first;
+      let isLast = last;
+      let isEven = even;
+      let isOdd = odd
+    "
+
+    class="list-group-item d-flex justify-content-between align-items-center"
+    [ngClass]="{
+      'list-group-item-dark': isLast,
+      'list-group-item-primary': isEven
+    }"
+  >
+    <div>
+      <span class="text-primary">{{ i + 1 }}</span>
+      <span>{{ character.name }} - </span>
+      <strong>power:</strong>
+      <span>{{ character.power }}</span>
+    </div>
+    <!-- <span>Es el primero: {{ isFirst }}</span>
+    <span>Es el ultimo: {{isLast }}</span> -->
+    <!-- <span>Es par: {{isEven}} </span>
+    <span>Es Impar: {{isOdd}} </span> -->
+
+    <!-- <span>Es el primero: {{ i === 0 }}</span>
+    characterList es 0 1 2 mientras que length cuenta el total que seria 3
+    para  comparar es necesario que a length le -1 asi su total sera 2
+    y puede comparas el indice 2 es igual al total 2 valor verdadero
+    <span>Es el ultimo: {{ i === characterList.length - 1 }}</span> -->
+
+    <button class="btn btn-danger" (click)="onDeleteCharacter(character.id)">x</button>
+  </li>
+</ul>

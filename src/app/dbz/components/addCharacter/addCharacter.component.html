@@ -1,0 +1,13 @@
+
+<!-- Two-Way Data Binding Directive" o directiva de enlace de dos vías   -> [(ngModel)]="character.name"
+sirve para capturar el valor que ingreso en el input -->
+<h4>Agregar personaje</h4>
+    <form class="row" (ngSubmit)="emitCharacter()">
+      <input type="text" [(ngModel)]="character.name" class="from-control mb-2" placeholder="Nombre" name="name"/>
+      <input type="number" [(ngModel)]="character.power" class="from-control mb-2" placeholder="Poder" name="power" />
+      <button type="submit" class="btn btn-primary" >Agregar</button>
+
+
+      <!--  contruye el objeto como lo himo en el objeto character-->
+      {{character| json}}
+    </form>

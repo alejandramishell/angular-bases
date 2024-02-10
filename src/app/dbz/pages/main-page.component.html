@@ -1,0 +1,15 @@
+<h1>DBZ Personajes</h1>
+<hr />
+<!-- parentesis escuchamos los eventos
+llaves cuadradas son atributos -->
+<!-- $event es un nombre especial que permite recibir el valor que esta enviando onNewCharacterhijo al onNewCharacterPadre ya que este nos pide especificar que tipo de caracter va a recibir -->
+<div class="row">
+  <div class="col">
+    <dbz-list [characterList]="characters"
+              (onDelete)="onDeleteCharacter($event)"></dbz-list>
+  </div>
+
+  <div class="col">
+    <dbz-add-character (onNewCharacterHijo)="onNewCharacter($event)"></dbz-add-character>
+  </div>
+</div>
